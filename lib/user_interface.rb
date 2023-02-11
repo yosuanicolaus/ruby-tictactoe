@@ -1,5 +1,6 @@
 class UserInterface
   def initialize
+    clear
     puts 'Welcome to Tic Tac Toe!'
     puts 'by Yosua Nicolaus 2023'
     puts ''
@@ -20,8 +21,10 @@ class UserInterface
   end
 
   def display_turn(board, player)
+    clear
     puts "#{player.name}'s turn <#{player.symbol}>"
     puts board.get_display
+    puts ''
   end
 
   def get_move(board, player)
@@ -39,6 +42,7 @@ class UserInterface
   end
 
   def display_end(board, winner = nil)
+    clear
     puts '------------------------------'
     puts board.get_display
     puts 'Game End!'
@@ -77,5 +81,9 @@ class UserInterface
       return get_input_symbol
     end
     input
+  end
+
+  private def clear
+    puts `clear`
   end
 end

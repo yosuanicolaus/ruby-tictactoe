@@ -24,9 +24,18 @@ class UserInterface
     puts board.get_display
   end
 
-  def get_move(player)
+  def get_move(board, player)
     puts "@#{player.name} - Enter a number (0 - 8)"
-    gets.chomp.to_i
+    input = gets.chomp.to_i
+
+    if input < 0 || input > 8
+      puts 'Number has to be between 0-8!'
+      return get_move(board, player)
+    elsif board.filled?(input)
+      puts "Index #{input} has been filled!"
+      return get_move(board, player)
+    end
+    input
   end
 
   def display_end(board, winner = nil)

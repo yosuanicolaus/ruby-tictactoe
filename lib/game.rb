@@ -17,7 +17,7 @@ class Game
   def game_loop
     active_player = @turn.even? ? @player_one : @player_two
     @ui.display_turn(@board, active_player)
-    move_position = @ui.get_move(active_player)
+    move_position = @ui.get_move(@board, active_player)
     @board.fill(move_position, active_player.symbol)
 
     return end_game(active_player) if @board.end?

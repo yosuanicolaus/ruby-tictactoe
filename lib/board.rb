@@ -7,6 +7,10 @@ class Board
     @board[index] = symbol
   end
 
+  def filled?(index)
+    @board[index] != index
+  end
+
   def get_display
     "   |   |   \n" +
       " #{@board[0]} | #{@board[1]} | #{@board[2]} \n" +

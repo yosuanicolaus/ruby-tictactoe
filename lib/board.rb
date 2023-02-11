@@ -19,6 +19,13 @@ class Board
       '   |   |   '
   end
 
+  def draw?
+    @board.each do |val|
+      return false if val.instance_of?(Integer)
+    end
+    true
+  end
+
   def end?
     b = @board
     [
@@ -29,5 +36,9 @@ class Board
       return true if b[x] == b[y] && b[x] == b[z]
     end
     false
+  end
+
+  def reset
+    @board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
   end
 end

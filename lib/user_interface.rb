@@ -19,10 +19,13 @@ class UserInterface
     [p1name, p1symb, p2name, p2symb]
   end
 
-  def play_turn(player, board)
+  def display_turn(player, board)
     puts "#{player.name}'s turn <#{player.symbol}>"
     puts board.get_display
-    puts 'Enter a number (0 - 8)'
+  end
+
+  def get_move(player)
+    puts "@#{player.name} - Enter a number (0 - 8)"
     gets.chomp.to_i
   end
 end

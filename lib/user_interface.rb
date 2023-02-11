@@ -8,13 +8,13 @@ class UserInterface
   def get_player_data
     puts 'Player 1 name: '
     p1name = gets.chomp
-    puts 'Player 1 symbol: '
-    p1symb = gets.chomp
+    puts 'Player 1 symbol: <A-Z>'
+    p1symb = get_input_symbol
 
     puts 'Player 2 name: '
     p2name = gets.chomp
-    puts 'Player 2 symbol: '
-    p2symb = gets.chomp
+    puts 'Player 2 symbol: <A-Z>'
+    p2symb = get_input_symbol(p1symb)
 
     [p1name, p1symb, p2name, p2symb]
   end
@@ -42,14 +42,31 @@ class UserInterface
 
   def play_again?
     puts 'Would you like to play again? [Y/n]'
-    answer = gets.chomp
-    case answer[0].upcase
-    when 'Y'
+    answer = gets.chomp[0]
+
+    if answer.nil? || answer.upcase == 'Y'
       true
-    when 'N'
+    elsif answer.upcase == 'N'
+      puts 'Thanks for playing!'
       false
     else
       play_again?
     end
+  end
+
+  private def get_input_symbol(previous_symbol = nil)
+    input = gets.chomp
+
+    if input.length != 1
+      puts 'Symbol has to be of 1 letter!'
+      return get_input_symbol
+    elsif input.ord < 65 || input.ord > 90
+      puts 'Symbol has to be between A-Z range!'
+      return get_input_symbol
+    elsif input == previous_symbol
+      puts 'Symbol has been taken!'
+      return get_input_symbol
+    end
+    input
   end
 end

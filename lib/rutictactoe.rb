@@ -1,3 +1,7 @@
 require_relative './game'
 
-Game.new
+begin
+  Game.new
+rescue Interrupt
+  puts ' ~ See you later!'
+end

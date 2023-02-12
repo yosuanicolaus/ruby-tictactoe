@@ -12,22 +12,21 @@ class Board
   end
 
   def get_display
-    "   |   |   \n" +
-      " #{@board[0]} | #{@board[1]} | #{@board[2]} \n" +
-      "___|___|___\n" +
-      "   |   |   \n" +
-      " #{@board[3]} | #{@board[4]} | #{@board[5]} \n" +
-      "___|___|___\n" +
-      "   |   |   \n" +
-      " #{@board[6]} | #{@board[7]} | #{@board[8]} \n" +
-      '   |   |   '
+    <<~HEREDOC
+         |   |
+       #{@board[0]} | #{@board[1]} | #{@board[2]}
+      ___|___|___
+         |   |
+       #{@board[3]} | #{@board[4]} | #{@board[5]}
+      ___|___|___
+         |   |
+       #{@board[6]} | #{@board[7]} | #{@board[8]}
+         |   |
+    HEREDOC
   end
 
   def draw?
-    @board.each do |val|
-      return false if val.instance_of?(Integer)
-    end
-    true
+    @board.none? { |val| val.instance_of?(Integer) }
   end
 
   def end?

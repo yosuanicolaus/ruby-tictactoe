@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'rutictactoe'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.summary     = 'Command Line Tic Tac Toe Game'
   s.description = 'Play Tic Tac Toe in your command line!'
   s.authors     = ['Yosua Nicolaus']
